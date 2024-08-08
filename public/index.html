@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car CRUD Interface</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+
+        <div x-data="carCrud" x-init="fetchCars()">
+            <h1>Car List</h1>
+        
+            <!-- Form for Create/Update -->
+ <form @submit.prevent="isEditing ? updateCar() : addCar()">
+        <input type="text" placeholder="Color" x-model="carForm.color" required>
+        <input type="text" placeholder="Make" x-model="carForm.make" required>
+        <input type="text" placeholder="Model" x-model="carForm.model" required>
+        <input type="text" placeholder="Reg Number" x-model="carForm.reg_number" required>
+        <button type="submit" x-text="isEditing ? 'Update Car' : 'Add Car'"></button>
+    </form>
+             <!-- Button to Get Most Popular Car Make -->
+    <button @click="getMostPopularMake()">Most Popular Make</button>
+    <p x-show="mostPopularMake">Most Popular Make: <span x-text="mostPopularMake"></span></p>
+        
+            <!-- Car Table -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Color</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Registration Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="(car, index) in cars" :key="car.reg_number">
+                        <tr>
+                            <td x-text="car.color"></td>
+                            <td x-text="car.make"></td>
+                            <td x-text="car.model"></td>
+                            <td x-text="car.reg_number"></td>
+                            <td>
+                                <button @click="editCar(index)">Edit</button>
+                                <button @click="deleteCar(index)">Delete</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    <script src="alpine.js"></script>
+
+</body>
+</html>
