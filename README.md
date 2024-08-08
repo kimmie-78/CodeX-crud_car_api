@@ -29,3 +29,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+[car.http.txt](https://github.com/user-attachments/files/16536083/car.http.txt)
+
+Most Popular Make function
+The "Most Popular Make" feature determines the most frequently occurring car make from a dataset. It aggregates car make information and identifies which make appears most often. This feature can be useful for analyzing trends, understanding market preferences, or providing insights into the most favored car brands in a given dataset. The result is typically returned as a string representing the most popular make.
