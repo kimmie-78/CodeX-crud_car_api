@@ -12,7 +12,7 @@ document.addEventListener("alpine:init", () => {
         mostPopularMake: '',
 
         fetchCars() {
-            axios.get('http://localhost:3000/cars')
+            axios.get('http://localhost:3012/cars')
                 .then(response => {
                     this.cars = response.data;
                 })
@@ -22,7 +22,7 @@ document.addEventListener("alpine:init", () => {
         },
 
         addCar() {
-            axios.post('http://localhost:3000/cars', this.carForm)
+            axios.post('http://localhost:3012/cars', this.carForm)
                 .then(response => {
                     this.cars.push(response.data);
                     this.resetForm();
@@ -41,7 +41,7 @@ document.addEventListener("alpine:init", () => {
         updateCar() {
             const reg_number = this.carForm.reg_number;
 
-            axios.put(`http://localhost:3000/cars/${reg_number}`, this.carForm)
+            axios.put(`http://localhost:3012/cars/${reg_number}`, this.carForm)
                 .then(response => {
                     this.cars[this.currentCarIndex] = response.data;
                     this.resetForm();
@@ -54,7 +54,7 @@ document.addEventListener("alpine:init", () => {
         deleteCar(index) {
             const reg_number = this.cars[index].reg_number;
 
-            axios.delete(`http://localhost:3000/cars/${reg_number}`)
+            axios.delete(`http://localhost:3012/cars/${reg_number}`)
                 .then(() => {
                     this.cars.splice(index, 1);
                 })
@@ -64,7 +64,7 @@ document.addEventListener("alpine:init", () => {
         },
 
         getMostPopularMake() {
-            axios.get('http://localhost:3000/cars/mostPopularMake')
+            axios.get('http://localhost:3012/cars/mostPopularMake')
                 .then(response => {
                     this.mostPopularMake = response.data.mostPopularMake;
                 })

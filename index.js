@@ -11,6 +11,10 @@ const API_URL = 'https://bootcamp.projectcodex.co/cars.json';
 
 let cars = [];
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Car CRUD API!');
+});
+
 // Fetch all cars
 app.get('/cars', async (req, res) => {
     try {
@@ -70,7 +74,7 @@ app.get('/cars/mostPopularMake', (req, res) => {
 
     res.json({ mostPopularMake });
 });
-
+//checking
 const PORT = process.env.PORT || 3012;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
