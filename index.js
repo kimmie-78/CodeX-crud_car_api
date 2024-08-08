@@ -2,18 +2,17 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import axios from 'axios';
+import path from 'path'; 
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('public'));
 
 const API_URL = 'https://bootcamp.projectcodex.co/cars.json';
 
 let cars = [];
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Car CRUD API!');
-});
 
 // Fetch all cars
 app.get('/cars', async (req, res) => {
