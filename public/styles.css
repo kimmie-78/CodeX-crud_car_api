@@ -4,11 +4,13 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
+        background: url('car.webp') no-repeat center center fixed;
+    background-size: cover; 
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #c82333;
 }
 
 /* form*/
